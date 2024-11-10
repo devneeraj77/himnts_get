@@ -6,6 +6,7 @@ export function GridTileImage({
   isInteractive = true,
   active,
   label,
+  alt = '',  // Add alt prop with a default value
   ...props
 }: {
   isInteractive?: boolean;
@@ -16,6 +17,7 @@ export function GridTileImage({
     currencyCode: string;
     position?: 'bottom' | 'center';
   };
+  alt?: string;  // Define the alt prop for accessibility
 } & React.ComponentProps<typeof Image>) {
   return (
     <div
@@ -30,6 +32,7 @@ export function GridTileImage({
     >
       {props.src ? (
         <Image
+          alt={alt}  // Ensure alt prop is passed here
           className={clsx('relative h-full w-full object-contain', {
             'transition duration-300 ease-in-out group-hover:scale-105': isInteractive
           })}

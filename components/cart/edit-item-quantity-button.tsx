@@ -6,6 +6,9 @@ import { Minus, Plus } from 'lucide-react';
 import { useActionState } from 'react';
 import { updateItemQuantity } from './actions';
 
+// Define the type for optimisticUpdate function
+type OptimisticUpdateFunction = (merchandiseId: string, updateType: 'plus' | 'minus') => void;
+
 function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
   return (
     <button
@@ -34,7 +37,7 @@ export function EditItemQuantityButton({
 }: {
   item: CartItem;
   type: 'plus' | 'minus';
-  optimisticUpdate: any;
+  optimisticUpdate: OptimisticUpdateFunction; // Correctly typing optimisticUpdate
 }) {
   const [message, formAction] = useActionState(updateItemQuantity, null);
   const payload = {
@@ -46,8 +49,8 @@ export function EditItemQuantityButton({
   return (
     <form
       action={async () => {
-        optimisticUpdate(payload.merchandiseId, type);
-        await actionWithVariant();
+        optimisticUpdate(payload.merchandiseId, type); // Optimistic update call
+        await actionWithVariant(); // Call form action to update quantity
       }}
     >
       <SubmitButton type={type} />

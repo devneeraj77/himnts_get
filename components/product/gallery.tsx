@@ -1,8 +1,8 @@
 'use client';
 
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
-import { GridTileImage } from 'components/grid/tile';
-import { useProduct, useUpdateURL } from 'components/product/product-context';
+import { GridTileImage } from '@/components/grid/tile';
+import { useProduct, useUpdateURL } from '@/components/product/product-context';
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 import Image from 'next/image';
 
 export function Gallery({ images }: { images: { src: string; altText: string }[] }) {

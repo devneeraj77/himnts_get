@@ -3,9 +3,10 @@
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
+
 import type { ListItem } from '.';
 import { FilterItem } from './item';
+import { ChevronDownIcon } from 'lucide-react';
 
 export default function FilterItemDropdown({ list }: { list: ListItem[] }) {
   const pathname = usePathname();
